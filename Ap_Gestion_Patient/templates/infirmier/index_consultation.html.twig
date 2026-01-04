@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Consultation{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container-center">
+    <a href="{{ path('app_consultation_sejour_date_donnee') }}" class="big-button">Consulter les séjours à une date donnée</a>
+    <a href="{{ path('app_consultation_sejour_commencement') }}" class="big-button">Consulter les séjours commençant à une date donnée</a>
+    <a href="{{ path('app_consultation_sejour_a_venir') }}" class="big-button">Consulter les séjours à venir</a>
+</div>
+
+{% endblock %}

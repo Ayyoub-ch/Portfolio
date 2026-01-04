@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ is_edit ? 'Modifier' : 'Créer' }} un service{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/admin/services.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2>
+                        <i class="fas fa-building"></i>
+                        {{ is_edit ? 'Modifier' : 'Créer' }} un service
+                    </h2>
+                </div>
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        <div class="mb-3">
+                            {{ form_label(form.libelle) }}
+                            {{ form_widget(form.libelle) }}
+                            {{ form_errors(form.libelle) }}
+                            <small class="form-text text-muted">
+                                Entrez le nom du service hospitalier (max 50 caractères)
+                            </small>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{{ path('app_admin_services') }}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Annuler
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> {{ is_edit ? 'Modifier' : 'Créer' }}
+                            </button>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+            {% if is_edit %}
+            <div class="card mt-3">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0"><i class="fas fa-info-circle"></i> Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Service :</strong> {{ service.libelle }}</p>
+                    <p><strong>Utilisateurs rattachés :</strong> {{ service.utilisateurs.count }}</p>
+                    <p><strong>Chambres rattachées :</strong> {{ service.chambres.count }}</p>
+                    {% if service.utilisateurs.count > 0 or service.chambres.count > 0 %}
+                        <div class="alert alert-warning mt-3">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Ce service ne peut pas être supprimé car il contient des données associées.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

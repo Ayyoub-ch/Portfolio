@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/sejour.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+    <!--  Bouton Ajouter un séjour  -->
+    <div class="card mb-4">
+        <div class="card-body d-flex justify-content-end">
+            <a href="{{ path('app_ajout_sejour') }}" class="btn btn-primary btn-sm">
+                Ajouter un séjour
+            </a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Liste des séjours</h2>
+        </div>
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date d'entrée</th>
+                            <th>Date sortie</th>
+                            <th>Libellé</th>
+                            <th>Statut du jour</th>
+                            <th>Patient</th>
+                            <th>Chambre</th>
+                            <th>Etage</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for sejour in sejours %}
+                            <tr>
+                                <td>{{ sejour.dateEntree|date('d/m/Y') }}</td>
+                                <td>{{ sejour.dateSortie|date('d/m/Y') }}</td>
+                                <td>{{ sejour.libelle }}</td>
+                                <td>{{ sejour.statutDuJour }}</td>
+                                <td>{{ sejour.patient ? sejour.patient.nom ~ ' ' ~ sejour.patient.prenom : 'N/A' }}</td>
+                                <td>{{ sejour.chambre ? 'Chambre ' ~ sejour.chambre.id : 'N/A' }}</td>
+                                <td>{{ sejour.chambre ? sejour.chambre.etage : 'N/A' }}</td>
+
+                                <td class="text-center actions-cell d-flex" style="gap: 5px; justify-content: center; align-items: center;"">
+
+                                    <!-- Modifier -->
+                                    <a href="{{ path('app_modifier_sejour', {'id': sejour.id}) }}"
+                                       class="btn btn-sm btn-outline-primary">
+                                        🔄️
+                                    </a>
+
+                                    <!-- Supprimer -->
+                                    <form method="POST"
+                                          action="{{ path('app_retirer_sejour', {'id': sejour.id}) }}"
+                                          onsubmit="return confirm('Supprimer définitivement ?');">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            🗑️
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center text-muted">
+                                    Aucun séjour trouvé
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

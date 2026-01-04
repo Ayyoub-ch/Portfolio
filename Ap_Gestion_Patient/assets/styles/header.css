@@ -1,0 +1,34 @@
+.header {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 10vh;
+    background-color: var(--background-header);
+}
+
+.header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+.logo-image {
+    margin-top: 3vh;
+    width: 5vw; 
+    height: auto; 
+}

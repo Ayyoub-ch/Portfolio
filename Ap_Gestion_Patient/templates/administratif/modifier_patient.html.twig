@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/modifier_patient.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- Formulaire superposé -->
+<div class="form_h2">
+    <h2>Modifier un patient</h2>
+</div>
+<form action="{{ path('app_modifier_patient', {'id': patient.id}) }}" method="POST" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+    <input type="text" name="nom" placeholder="Nom" value="{{ patient.nom }}" required>
+    <input type="text" name="prenom" placeholder="Prénom" value="{{ patient.prenom }}" required>
+    <input type="text" name="telephone" placeholder="Téléphone" value="{{ patient.telephone }}" required>
+    <select name="sexe" required>
+        <option value="">Sexe</option>
+        <option value="M" {% if patient.sexe == 'M' %}selected{% endif %}>M</option>
+        <option value="F" {% if patient.sexe == 'F' %}selected{% endif %}>F</option>
+    </select>
+    <input type="text" name="note" placeholder="Note" value="{{ patient.note }}">
+    <select name="localite_id" required>
+        <option value="">Localité</option>
+        {% for localite in localites %}
+            <option value="{{ localite.id }}" {% if patient.localite and patient.localite.id == localite.id %}selected{% endif %}>{{ localite.ville }} ({{ localite.codePostal }})</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Modifier le patient</button>
+</form>
+
+
+{% endblock %}

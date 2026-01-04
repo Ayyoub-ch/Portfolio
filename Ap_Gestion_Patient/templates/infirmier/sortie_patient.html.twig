@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}Sortie des patints{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/patient.css') }}">
+{% endblock %}
+{% block body %}
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Gérer les sorties des patients</h2>
+        </div>
+        <div class="card-body">
+
+            <a href="{{ path('app_sortie_aujourdhui') }}" class="btn btn-primary mb-3">Afficher les sorties du jour</a>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Numéro de séjour</th>
+                            <th>Numéro du patient</th>
+                            <th>Localisation</th>
+                            <th>Date de sortie</th>
+                            <th>Libelle</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Note</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for sejour in sejours %}
+                            <tr style="cursor:pointer">
+                                <td>{{ sejour.id }}</td>
+                                <td>{{ sejour.patient.id }}</td>
+                                {# Affichage de la chambre et de l'étage avec labels #}
+                                <td>
+                                    Chambre : {{ sejour.chambre.id }}<br>
+                                    Etage : {{ sejour.chambre.etage }}
+                                </td>
+                                {# Correction : formatage de la date d'entrée via getter #}
+                                {# Ancien code : {{ sejour.date_entree|date('d/m/Y') }} #}
+                                <td>{{ sejour.dateSortie|date('d/m/Y') }}</td>
+                                {# Correction : suppression de sejour.nom (n'existe pas dans l'entité Sejour) #}
+                                {# Ancien code : {{ sejour.nom }} #}
+                                <td>{{ sejour.libelle }}</td>
+                                <td onclick="window.location.href='{{ path('app_detail_patient', {'id': sejour.patient.id}) }}'">{{ sejour.patient.nom }}</td>
+                                <td onclick="window.location.href='{{ path('app_detail_patient', {'id': sejour.patient.id}) }}'">{{ sejour.patient.prenom }}</td>
+                                {# Correction : accès à la note du patient via sejour.patient.note #}
+                                {# Ancien code : {{ patient.note }} #}
+                                <td>{{ sejour.patient.note }}</td>
+                                <td>
+                                    {% if sejour.isSortieEtat() %}
+                                        <span class="text-success fw-bold">Sortie Validée</span>
+                                        {# Si la sortie est validée, on affiche la mention et le bouton disparaît. #}
+                                    {% else %}
+                                        <form method="post" style="display:inline;" action="{{ path('app_validation_sortie', {'id': sejour.id}) }}">
+                                            <button type="submit" class="btn btn-success">✅​Valider la sortie</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7" class="text-center text-muted">
+                                    Aucun sejour trouvé
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

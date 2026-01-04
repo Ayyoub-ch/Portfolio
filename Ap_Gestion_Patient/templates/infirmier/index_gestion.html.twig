@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Gestion{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="card-header">
+    <h2>Gestion des séjours</h2>
+</div>
+<div class="container-center">
+    <a href="{{ path('app_arrivee') }}" class="big-button">Gérer les arrivées des patients</a>
+    <a href="{{ path('app_sortie') }}" class="big-button">Gérer les sorties des patients</a>
+</div>
+{% endblock %}

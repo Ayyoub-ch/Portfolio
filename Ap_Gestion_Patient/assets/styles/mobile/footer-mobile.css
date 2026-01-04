@@ -1,0 +1,53 @@
+/* Styles mobile pour le footer */
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 30px 15px 15px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-section h3 {
+        font-size: 16px;
+    }
+
+    .footer-section p,
+    .footer-section ul {
+        font-size: 13px;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 10px 10px;
+    }
+
+    .footer-content {
+        gap: 25px;
+    }
+
+    .contact-item {
+        font-size: 12px;
+    }
+
+    .contact-item svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .social-links a svg {
+        width: 20px;
+        height: 20px;
+    }
+}

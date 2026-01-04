@@ -1,0 +1,41 @@
+/* CSS uniquement pour mobile */
+@media (max-width: 768px) {
+    .header {
+        height: auto;
+        min-height: 10vh;
+    }
+
+    .header nav {
+        flex-direction: column;
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .logo-image {
+        width: 15vw;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-list li a {
+        display: block;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .nav-list li a:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}

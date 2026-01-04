@@ -1,0 +1,90 @@
+/* ======================= */
+/* FORMULAIRE MODIFIER PATIENT */
+/* ======================= */
+
+/* Conteneur général centré */
+.form-container {
+    background: #f9f9f9;
+    padding: 25px 30px;
+    border-radius: 8px;
+    margin: 40px auto; /* centre horizontalement et ajoute un espace vertical */
+    border: 1px solid #ddd;
+    max-width: 600px;
+
+    display: flex;
+    flex-direction: column; /* empile h2 et formulaire */
+    align-items: center;    /* centre horizontalement */
+    gap: 20px;              /* espace entre le h2 et le formulaire */
+}
+
+.form_h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centre horizontalement */
+    gap: 15px;           /* espace entre le h2 et le formulaire */
+    margin: 30px auto 0 auto; /* descendre le formulaire (100px du haut) et centré horizontalement */
+    max-width: 600px;
+}
+
+
+/* Titre du formulaire */
+.form-container h2 {
+    margin: 0;
+    font-size: 1.6em;
+    color: #333;
+    text-align: center;
+}
+
+/* Champs du formulaire */
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;  /* prend toute la largeur du conteneur */
+    gap: 12px;    /* espace entre les champs */
+    margin: 50px auto;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95em;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Textarea */
+.form-container textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Boutons */
+.form-container button {
+    padding: 8px 15px;
+    font-size: 0.95em;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+/* Bouton Modifier */
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}

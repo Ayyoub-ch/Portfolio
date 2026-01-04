@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Infirmierie{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/index.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="card-header">
+    <h2>Menu des infirmiers</h2>
+</div>
+<div class="container-center">
+    <a href="{{ path('app_gestion') }}" class="big-button">Gestion des séjours</a>
+    <a href="{{ path('app_consultation') }}" class="big-button">Consultation des séjours</a>
+</div>
+{% endblock %}

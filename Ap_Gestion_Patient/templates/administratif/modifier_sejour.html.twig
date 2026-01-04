@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/modifier_sejour.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- Formulaire superposé -->
+<div class="form_h2">
+    <h2>Modifier un séjour</h2>
+</div>
+<form action="{{ path('app_modifier_sejour', {'id': sejour.id}) }}" method="POST" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+    <input type="datetime-local" name="date_entree" placeholder="Date d'entrée" value="{{ sejour.dateEntree ? sejour.dateEntree|date('Y-m-d\\TH:i') : '' }}" required>
+    <input type="datetime-local" name="date_sortie" placeholder="Date de sortie" value="{{ sejour.dateSortie ? sejour.dateSortie|date('Y-m-d\\TH:i') : '' }}" required>
+    <input type="text" name="libelle" placeholder="Libellé" value="{{ sejour.libelle }}" required>
+    <select name="statut_du_jour" required>
+        <option value="">Statut du jour</option>
+        <option value="Présent" {% if sejour.statutDuJour == 'Présent' %}selected{% endif %}>Présent</option>
+        <option value="Absent" {% if sejour.statutDuJour == 'Absent' %}selected{% endif %}>Absent</option>
+        <option value="Sorti" {% if sejour.statutDuJour == 'Sorti' %}selected{% endif %}>Sorti</option>
+    </select>
+    <select name="patient_id" required>
+        <option value="">Patient</option>
+        {# Vous devrez passer la liste des patients depuis le contrôleur #}
+        {% if patients is defined %}
+            {% for patient in patients %}
+                <option value="{{ patient.id }}" {% if sejour.patient and sejour.patient.id == patient.id %}selected{% endif %}>
+                    {{ patient.nom }} {{ patient.prenom }}
+                </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <select name="chambre_id" required>
+        <option value="">Chambre</option>
+        {# Vous devrez passer la liste des chambres depuis le contrôleur #}
+        {% if chambres is defined %}
+            {% for chambre in chambres %}
+                <option value="{{ chambre.id }}" {% if sejour.chambre and sejour.chambre.id == chambre.id %}selected{% endif %}>
+                    Chambre {{ chambre.id }}
+                </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <select name="etage" required>
+        <option value="">Étage</option>
+        {# Vous devrez passer la liste des étages depuis le contrôleur #}
+        {% if chambres is defined %}
+            {% for chambre in chambres %}
+                <option value="{{ chambre.etage }}" {% if sejour.chambre and sejour.chambre.etage == chambre.etage %}selected{% endif %}>
+                    Étage {{ chambre.etage }}
+                </option>
+            {% endfor %}
+        {% endif %}
+    </select>
+    <button type="submit">Modifier le séjour</button>
+</form>
+
+
+{% endblock %}

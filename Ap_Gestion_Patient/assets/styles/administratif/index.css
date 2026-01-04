@@ -1,0 +1,60 @@
+/*Style modifié selon la demande*/
+
+.container-center {
+    display: flex;
+    flex-direction: row;      /* Les boutons sur la même ligne */
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    gap: 70px;                /* Espacement entre les boutons */
+}
+
+.big-button {
+    display: block;
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;             /* Texte noir */
+    background-color: #000;/* Boutons blancs */
+    border: 2px solid #000;   /* Bordure noire pour que ça ressorte */
+    border-radius: 10px;
+    transition: 0.2s;
+    width: 300px;
+    text-align: center;
+}
+
+.big-button:hover {
+    background-color: #ffffff;
+}
+/*Style modifié selon la demande*/
+
+.container-center {
+    display: flex;
+    flex-direction: row;      /* Les boutons sur la même ligne */
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    gap: 70px;                /* Espacement entre les boutons */
+}
+
+.big-button {
+    display: block;
+    padding: 20px 40px;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;             /* Texte noir */
+    background-color: #000;/* Boutons blancs */
+    border: 2px solid #000;   /* Bordure noire pour que ça ressorte */
+    border-radius: 10px;
+    transition: 0.2s;
+    width: 300px;
+    text-align: center;
+}
+
+.big-button:hover {
+    background-color: grey;
+}

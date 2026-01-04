@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/sejour.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<!-- Formulaire superposé -->
+<div class="form_h2">
+    <h2>Ajouter un séjour</h2>
+</div>
+<form action="{{ path('app_ajouter_sejour') }}" method="POST" style="display: flex; gap: 10px; align-items: center; margin-bottom: 15px;">
+    <input type="datetime-local" name="date_entree" placeholder="Date d'entrée" required>
+    <input type="datetime-local" name="date_sortie" placeholder="Date de sortie" required>
+    <input type="text" name="libelle" placeholder="Libellé" required>
+    <select name="statut_du_jour" required>
+        <option value="">Statut du jour</option>
+        <option value="Présent">Présent</option>
+        <option value="Absent">Absent</option>
+        <option value="Sorti">Sorti</option>
+    </select>
+    <select name="patient_id" required>
+        <option value="">Patient</option>
+        {% for patient in patients %}
+            <option value="{{ patient.id }}">
+                {{ patient.nom }} {{ patient.prenom }}
+            </option>
+        {% endfor %}
+    </select>
+    <select name="chambre_id" required>
+        <option value="">Chambre</option>
+        {% for chambre in chambres %}
+            <option value="{{ chambre.id }}">
+                Chambre {{ chambre.id }}
+            </option>
+        {% endfor %}
+    </select>
+    <select name="chambre_id" required>
+        <option value="">Étage</option>
+        {% for chambre in chambres %}
+            <option value="{{ chambre.id }}">
+                Étage {{ chambre.etage }}
+            </option>
+        {% endfor %}
+    </select>
+    <button type="submit">Ajouter le séjour</button>
+</form>
+{% endblock %}

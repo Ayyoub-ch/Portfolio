@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hopital{% endblock %}
+
+{% block body %}
+{% if not app.user %}
+    <section id="no-connect">
+        <p>Vous etes pas encore connecté<p/>
+    </section>
+  {% else %}
+    <section id="connect">
+        <p>Vous etes connecté<p/>
+    </section>
+  {% endif %}
+{% endblock %}
