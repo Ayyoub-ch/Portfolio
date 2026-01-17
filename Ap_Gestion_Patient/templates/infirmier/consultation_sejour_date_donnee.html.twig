@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Séjours à venir{% endblock %}
+{% block title %}Consultation des séjours à une date donnée{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -9,7 +9,7 @@
 {% block body %}
 <div class="card">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h2>Séjours à venir (à partir du {{ referenceDate|date('d/m/Y') }})</h2>
+        <h2>Séjours effectifs le {{ selectedDate ? selectedDate|date('d/m/Y') : '...' }}</h2>
         <a href="{{ path('app_consultation') }}" class="btn btn-secondary btn-sm">← Retour</a>
     </div>
     <div class="card-body">
@@ -19,14 +19,11 @@
 
         <form method="get" class="row g-3 align-items-end mb-4">
             <div class="col-auto">
-                <label class="form-label" for="date">Date de référence</label>
-                <input type="date" id="date" name="date" class="form-control" value="{{ referenceDate|date('Y-m-d') }}">
+                <label class="form-label" for="date">Date</label>
+                <input type="date" id="date" name="date" class="form-control" value="{{ selectedDate ? selectedDate|date('Y-m-d') : '' }}">
             </div>
             <div class="col-auto">
                 <button type="submit" class="btn btn-primary">Valider</button>
-            </div>
-            <div class="col-auto">
-                <a href="{{ path('app_consultation_sejour_a_venir') }}" class="btn btn-secondary">Réinitialiser (aujourd'hui)</a>
             </div>
         </form>
 
@@ -69,7 +66,7 @@
                             <td>{{ sejour.libelle }}</td>
                             <td>{{ sejour.statutDuJour }}</td>
                             <td class="text-center">
-                                <a class="btn btn-outline-primary btn-sm" href="{{ path('app_detail_sejour', { id: sejour.id, date: sejour.dateEntree|date('Y-m-d') }) }}">Voir le séjour</a>
+                                <a class="btn btn-outline-primary btn-sm" href="{{ path('app_detail_sejour', { id: sejour.id, date: selectedDate|date('Y-m-d') }) }}">Voir le séjour</a>
                                 {% if sejour.patient %}
                                     <a class="btn btn-link btn-sm" href="{{ path('app_detail_patient', {'id': sejour.patient.id}) }}">Fiche patient</a>
                                 {% endif %}
@@ -77,18 +74,12 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="8" class="text-center text-muted">Aucun séjour à venir à partir de cette date.</td>
+                            <td colspan="8" class="text-center text-muted">Aucun séjour trouvé pour cette date.</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
-        
-        {% if sejours|length > 0 %}
-            <div class="alert alert-info mt-3">
-                <strong>{{ sejours|length }}</strong> séjour(s) à venir affiché(s) par ordre chronologique.
-            </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}

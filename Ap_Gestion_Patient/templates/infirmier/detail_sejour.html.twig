@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détail du séjour{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/patient.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="mb-3">
+        {% if backDate %}
+            <a href="{{ path('app_consultation_sejour_date_donnee', {'date': backDate}) }}" class="btn btn-secondary">Retour à la liste</a>
+        {% else %}
+            <a href="{{ path('app_consultation_sejour_date_donnee') }}" class="btn btn-secondary">Retour à la liste</a>
+        {% endif %}
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>Détail du séjour n°{{ sejour.id }}</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered w-75 mx-auto">
+                <tbody>
+                    <tr>
+                        <th>Patient</th>
+                        <td>
+                            {% if sejour.patient %}
+                                {{ sejour.patient.nom }} {{ sejour.patient.prenom }} (ID {{ sejour.patient.id }})
+                            {% else %}
+                                <span class="text-muted">Non renseigné</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Chambre</th>
+                        <td>
+                            {% if sejour.chambre %}
+                                Chambre {{ sejour.chambre.id }} - Etage {{ sejour.chambre.etage }}
+                            {% else %}
+                                <span class="text-muted">Non renseignée</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date d'entrée</th>
+                        <td>{{ sejour.dateEntree|date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de sortie</th>
+                        <td>{{ sejour.dateSortie|date('d/m/Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Libellé</th>
+                        <td>{{ sejour.libelle }}</td>
+                    </tr>
+                    <tr>
+                        <th>Statut du jour</th>
+                        <td>{{ sejour.statutDuJour }}</td>
+                    </tr>
+                    <tr>
+                        <th>Arrivée validée</th>
+                        <td>{{ sejour.isArriveeEtat() ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sortie validée</th>
+                        <td>{{ sejour.isSortieEtat() ? 'Oui' : 'Non' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,6 +1,85 @@
 {% extends 'base.html.twig' %}
-{% block title %}Consultation des séjours en fonction d'une date donnée{% endblock %}
+{% block title %}Séjours commençant à une date donnée{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/patient.css') }}">
+{% endblock %}
+
 {% block body %}
-    <h1>Séjours commençant à une date donnée</h1>
-    <p>Contenu à venir...</p>
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2>Séjours commençant le {{ selectedDate ? selectedDate|date('d/m/Y') : '...' }}</h2>
+        <a href="{{ path('app_consultation') }}" class="btn btn-secondary btn-sm">← Retour</a>
+    </div>
+    <div class="card-body">
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+
+        <form method="get" class="row g-3 align-items-end mb-4">
+            <div class="col-auto">
+                <label class="form-label" for="date">Date de commencement</label>
+                <input type="date" id="date" name="date" class="form-control" value="{{ selectedDate ? selectedDate|date('Y-m-d') : '' }}">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </form>
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Numéro de séjour</th>
+                        <th>Patient</th>
+                        <th>Localisation</th>
+                        <th>Date d'entrée</th>
+                        <th>Date de sortie</th>
+                        <th>Libellé</th>
+                        <th>Statut du jour</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sejour in sejours %}
+                        <tr>
+                            <td>{{ sejour.id }}</td>
+                            <td>
+                                {% if sejour.patient %}
+                                    {{ sejour.patient.nom }} {{ sejour.patient.prenom }}<br>
+                                    <small class="text-muted">ID {{ sejour.patient.id }}</small>
+                                {% else %}
+                                    <span class="text-muted">Non renseigné</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if sejour.chambre %}
+                                    Chambre : {{ sejour.chambre.id }}<br>
+                                    Etage : {{ sejour.chambre.etage }}
+                                {% else %}
+                                    <span class="text-muted">Non renseignée</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ sejour.dateEntree|date('d/m/Y') }}</td>
+                            <td>{{ sejour.dateSortie|date('d/m/Y') }}</td>
+                            <td>{{ sejour.libelle }}</td>
+                            <td>{{ sejour.statutDuJour }}</td>
+                            <td class="text-center">
+                                <a class="btn btn-outline-primary btn-sm" href="{{ path('app_detail_sejour', { id: sejour.id, date: selectedDate|date('Y-m-d') }) }}">Voir le séjour</a>
+                                {% if sejour.patient %}
+                                    <a class="btn btn-link btn-sm" href="{{ path('app_detail_patient', {'id': sejour.patient.id}) }}">Fiche patient</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">Aucun séjour commençant à cette date.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

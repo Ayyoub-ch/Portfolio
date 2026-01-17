@@ -13,7 +13,10 @@
         </div>
         <div class="card-body">
 
-            <a href="{{ path('app_arrivee_aujourdhui') }}" class="btn btn-primary mb-3">Afficher les arrivées du jour</a>
+            <div class="mb-3 d-flex justify-content-between">
+                <a href="{{ path('app_gestion') }}" class="btn btn-secondary btn-sm">← Retour</a>
+                <a href="{{ path('app_arrivee_aujourdhui') }}" class="btn btn-primary">Afficher les arrivées du jour</a>
+            </div>
 
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -52,15 +55,21 @@
                                 {# Correction : accès à la note du patient via sejour.patient.note #}
                                 {# Ancien code : {{ patient.note }} #}
                                 <td>{{ sejour.patient.note }}</td>
-                                <td>
-                                    {% if sejour.isArriveeEtat() %}
-                                        <span class="text-success fw-bold">Arrivée Validée</span>
-                                        {# Si le statut du séjour est 'validée', on affiche la mention et le bouton de validation disparaît. #}
-                                    {% else %}
-                                        <form method="post" style="display:inline;" action="{{ path('app_validation_entree', {'id': sejour.id}) }}">
-                                            <button type="submit" class="btn btn-success">✅​Valider l'arrivée</button>
-                                        </form>
-                                    {% endif %}
+                                <td class="text-center">
+                                    <div class="d-flex gap-1 justify-content-center align-items-center flex-wrap">
+                                        <a class="btn btn-outline-primary btn-sm" href="{{ path('app_detail_sejour', { id: sejour.id }) }}">Voir le séjour</a>
+                                        {% if sejour.patient %}
+                                            <a class="btn btn-link btn-sm" href="{{ path('app_detail_patient', {'id': sejour.patient.id}) }}">Fiche patient</a>
+                                        {% endif %}
+                                        {% if sejour.isArriveeEtat() %}
+                                            <span class="text-success fw-bold">Arrivée Validée</span>
+                                        {% else %}
+                                            <form method="post" style="display:inline;" action="{{ path('app_validation_entree', {'id': sejour.id}) }}">
+                                                <button type="submit" class="btn btn-success btn-sm">✅​Valider l'arrivée</button>
+                                            </form>
+                                        {% endif %}
+                                    </div>
+                                </td>
                             </tr>
                         {% else %}
                             <tr>
