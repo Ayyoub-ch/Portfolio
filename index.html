@@ -291,11 +291,11 @@
     </div>
 
     <!-- Modals -->
-    <div id="modal-biblio" class="modal" onclick="closeModal(event, 'biblio')">
+    <div id="modal-biblio" class="modal" onclick="closeModal('biblio')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div class="modal-title">📚 Projet Biblio</div>
-                <button class="close-btn" onclick="closeModal(event, 'biblio')"></button>
+                <button class="close-btn" onclick="closeModal('biblio')"></button>
             </div>
             <div class="modal-body">
                 <h2>Système de Gestion de Bibliothèque</h2>
@@ -315,11 +315,11 @@
         </div>
     </div>
 
-    <div id="modal-matrice" class="modal" onclick="closeModal(event, 'matrice')">
+    <div id="modal-matrice" class="modal" onclick="closeModal('matrice')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div class="modal-title">📊 Projet Matrice de Compétences</div>
-                <button class="close-btn" onclick="closeModal(event, 'matrice')"></button>
+                <button class="close-btn" onclick="closeModal('matrice')"></button>
             </div>
             <div class="modal-body">
                 <h2>Outil de Gestion des Compétences</h2>
@@ -340,11 +340,11 @@
         </div>
     </div>
 
-    <div id="modal-rugby" class="modal" onclick="closeModal(event, 'rugby')">
+    <div id="modal-rugby" class="modal" onclick="closeModal('rugby')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div class="modal-title">🏉 Projet Site Rugby</div>
-                <button class="close-btn" onclick="closeModal(event, 'rugby')"></button>
+                <button class="close-btn" onclick="closeModal('rugby')"></button>
             </div>
             <div class="modal-body">
                 <h2>Site Web Association</h2>
@@ -362,11 +362,11 @@
         </div>
     </div>
 
-    <div id="modal-gestion-sejour" class="modal" onclick="closeModal(event, 'gestion-sejour')">
+    <div id="modal-gestion-sejour" class="modal" onclick="closeModal('gestion-sejour')">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
                 <div class="modal-title">🏥 Projet Gestion Séjour</div>
-                <button class="close-btn" onclick="closeModal(event, 'gestion-sejour')"></button>
+                <button class="close-btn" onclick="closeModal('gestion-sejour')"></button>
             </div>
             <div class="modal-body">
                 <h2>Un système de Gestion de Séjour d'un Hopital</h2>
@@ -395,6 +395,34 @@
         </div>
     </div>
 
+    <div id="modal-reservation-vehicule" class="modal" onclick="closeModal('reservation-vehicule')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">🚗 Projet Réservation de Véhicule</div>
+                <button class="close-btn" onclick="closeModal('reservation-vehicule')"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Un système de Réservation de Véhicule</h2>
+                <p>Contexte: Projet d'Atelier Professionnel fait en 2e Année de BTS SIO, autour d'une entreprise souhaitant une application afin de gérer la réservation de ses véhicules</p>
+                <p>But: Développer une application de gestion des réservations de véhicules pour suivre les demandes et les disponibilités</p>
+                <p>Technologies utilisées: Java</p>
+                <p>Base de données: Postgres</p>
+                <p>Projet: Projet_Reservation_Vehicule</p>
+                <p>Application complète de gestion des réservations de véhicules pour une entreprise.</p>
+                <p><strong>Fonctionnalités principales :</strong></p>
+                <p><strong>Gestion des réservations selon le rôle :</strong></p>
+                <p>• Employé: Faire une demande de réservation pour un véhicule à une date donnée</p>
+                <p>• Employé: Consulter ses demandes de réservation passées et à venir</p>
+                <p>• Gestionnaire: Consulter toutes les demandes de réservation</p>
+                <p>• Gestionnaire: Accepter ou refuser une demande de réservation</p>
+                <a href="https://github.com/Ayyoub-ch/Projet_Reservation_Vehicule.git" target="_blank" class="github-btn">Voir le projet sur GitHub</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
     <script>
         // Horloge
         function updateClock() {
@@ -411,7 +439,7 @@
             document.getElementById(`modal-${project}`).style.display = 'block';
         }
 
-        function closeModal(event, project) {
+        function closeModal(project) {
             document.getElementById(`modal-${project}`).style.display = 'none';
         }
 
