@@ -395,6 +395,35 @@
         </div>
     </div>
 
+    <script>
+        // Horloge
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Gestion des modals
+        function openProject(project) {
+            document.getElementById(`modal-${project}`).style.display = 'block';
+        }
+
+        function closeModal(event, project) {
+            document.getElementById(`modal-${project}`).style.display = 'none';
+        }
+
+        // Fermer avec Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+            }
+        });
+    </script>
                 
 </body>
 </html>
