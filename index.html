@@ -275,6 +275,11 @@
             <div class="file-name">Projet Gestion Séjour</div>
         </div>
 
+        <div class="file-icon" onclick="openProject('reservation-vehicule')">
+            <div class="icon-image">🚗</div>
+            <div class="file-name">Projet Réservation de Véhicule</div>
+        </div>
+
         <a href="https://www.linkedin.com/in/ayyoub-chetouani-28098a287/" target="_blank" class="file-icon" style="text-decoration: none;">
             <div class="icon-image" style="background: linear-gradient(135deg, #0a66c2 0%, #005885 100%); padding: 0;">
                 <svg viewBox="0 0 24 24" style="width: 100%; height: 100%; fill: white; padding: 8px;">
@@ -297,6 +302,7 @@
                 <p>Contexte: Réalisation lors d'un Atelier Professionnel lors de la Première Année de BTS SIO en mai 2025</p>
                 <p>But: Créer un système de gestion complet pour une bibliothèque moderne</p>
                 <p>Technologies utilisées: Symfony (PHP), HTML, CSS, JavaScript</p>
+                <p>Base de données: Postgres</p>
                 <p>Application complète pour la gestion d'une bibliothèque moderne.</p>
                 <p><strong>Fonctionnalités principales :</strong></p>
                 <p>• Catalogage et recherche de livres</p>
@@ -320,6 +326,7 @@
                 <p>Contexte: Réalisation professionnelle dans le cadre d'un stage à Logical Conseils entre le 19 mai et le 27 juin 2025</p>
                 <p>But: Créer un système de récolte et de suivi des compétences afin d'aider les pôles de Recrutement et Ressources Humaines de l'entreprise</p>
                 <p>Technologies utilisées: Flask (Python), HTML, CSS</p>
+                <p>Base de données: MYSQL</p>
                 <p>Plateforme d'évaluation et de suivi des compétences des consultants de Logical Conseils.</p>
                 <p><strong>Fonctionnalités principales :</strong></p>
                 <p>• Création de matrices personnalisées</p>
@@ -366,6 +373,7 @@
                 <p>Contexte: Projet d'Atelier Professionnel fait en 2e Année de BTS SIO, autour d'un hôpital souhaitant une application afin de gérer les séjours des patients</p>
                 <p>But: Développer une application de gestion des séjours pour suivre l'hospitalisation des patients (intervention, examen, ambulatoire, lit et chambre)</p>
                 <p>Technologies utilisées: Symfony (Framework), PHP, HTML, CSS</p>
+                <p>Base de données: Postgres</p>
                 <p>Projet: Projet_Gestion_Patient</p>
                 <p>Application complète de gestion des séjours des patients en milieu hospitalier.</p>
                 <p><strong>Fonctionnalités principales :</strong></p>
@@ -386,6 +394,28 @@
             </div>
         </div>
     </div>
+
+    <div id="modal-reservation-vehicule" class="modal" onclick="closeModal(event, 'reservation-vehicule')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">🚗 Projet Réservation de Véhicule</div>
+                <button class="close-btn" onclick="closeModal(event, 'reservation-vehicule')"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Un système de Réservation de Véhicule</h2>
+                <p>Contexte: Projet d'Atelier Professionnel fait en 2e Année de BTS SIO, autour d'une entreprise souhaitant une application afin de gérer la réservation de ses véhicules</p>
+                <p>But: Développer une application de gestion des réservations de véhicules pour suivre les demandes et les disponibilités</p>
+                <p>Technologies utilisées: Java</p>
+                <p>Base de données: Postgres</p>
+                <p>Projet: Projet_Reservation_Vehicule</p>
+                <p>Application complète de gestion des réservations de véhicules pour une entreprise.</p>
+                <p><strong>Fonctionnalités principales :</strong></p>
+                <p><strong>Gestion des réservations selon le rôle :</strong></p>
+                <p>• Employé: Faire une demande de réservation pour un véhicule à une date donnée</p>
+                <p>• Employé: Consulter ses demandes de réservation passées et à venir</p>
+                <p>• Gestionnaire: Consulter toutes les demandes de réservation</p>
+                <p>• Gestionnaire: Accepter ou refuser une demande de réservation</p>
+                <a href="
 
     <script>
         // Horloge
