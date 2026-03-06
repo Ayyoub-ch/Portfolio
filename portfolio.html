@@ -125,6 +125,10 @@
             background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
 
+        .file-icon:nth-child(4) .icon-image {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+
         .file-name {
             font-size: 13px;
             text-align: center;
@@ -265,6 +269,11 @@
             <div class="icon-image">🏉</div>
             <div class="file-name">Projet Site Rugby</div>
         </div>
+
+        <div class="file-icon" onclick="openProject('gestion-sejour')">
+            <div class="icon-image">🏥</div>
+            <div class="file-name">Projet Gestion Séjour</div>
+        </div>
     </div>
 
     <!-- Modals -->
@@ -333,6 +342,38 @@
                 <p>• Galerie photos </p>
                 <p>• Système de billetterie en ligne</p>
                 <p>• Espace membres et boutique</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-gestion-sejour" class="modal" onclick="closeModal(event, 'gestion-sejour')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <div class="modal-title">🏥 Projet Gestion Séjour</div>
+                <button class="close-btn" onclick="closeModal(event, 'gestion-sejour')"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Un système de Gestion de Séjour d'un Hopital</h2>
+                <p>Contexte: Projet d'Atelier Professionnel fait en 2e Année de BTS SIO, autour d'un hôpital souhaitant une application afin de gérer les séjours des patients</p>
+                <p>But: Développer une application de gestion des séjours pour suivre l'hospitalisation des patients (intervention, examen, ambulatoire, lit et chambre)</p>
+                <p>Technologies utilisées: Symfony (Framework), PHP, HTML, CSS</p>
+                <p>Projet: Projet_Gestion_Patient</p>
+                <p>Application complète de gestion des séjours des patients en milieu hospitalier.</p>
+                <p><strong>Fonctionnalités principales :</strong></p>
+                <p><strong>Gestion des séjours selon le rôle :</strong></p>
+                <p>• Personnel Administratif: Ajouter un nouveau patient, modifier des patients existants</p>
+                <p>• Personnel Administratif: Gérer les séjours des patients</p>
+                <p>• Infirmier: Prendre en compte l'arrivée et la sortie d'un patient dans un service</p>
+                <p>• Infirmier: Consulter les séjours à une date donnée</p>
+                <p>• Infirmier: Consulter les séjours commençant à une date donnée</p>
+                <p>• Infirmier: Consulter les séjours à venir</p>
+                <p><strong>Versions du projet :</strong></p>
+                <p>• Une version faite lors du travail de groupe qui est incomplète et non fonctionnelle</p>
+                <p>• Une version faite seul après la deadline du travail et qui est complète</p>
+                <p>Ce dépôt correspond à la version faite seul.</p>
+                <p><strong>Fonctionnalité complémentaire :</strong></p>
+                <p>• Possibilité de se connecter avec un identifiant et un mot de passe</p>
+                <a href="https://github.com/Ayyoub-ch/Projet_Gestion_Patient.git" target="_blank" class="github-btn">Voir le projet sur GitHub</a>
             </div>
         </div>
     </div>
