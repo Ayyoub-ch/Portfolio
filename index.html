@@ -93,6 +93,9 @@
             border-radius: 8px;
             transition: all 0.2s;
             background: transparent;
+            border: none;
+            font-family: inherit;
+            color: inherit;
         }
 
         .file-icon:hover {
@@ -255,30 +258,30 @@
 
     <!-- Bureau -->
     <div class="desktop">
-        <div class="file-icon" onclick="openProject('biblio')">
-            <div class="icon-image">📚</div>
-            <div class="file-name">Projet Biblio</div>
-        </div>
+        <button type="button" class="file-icon" onclick="openProject('biblio')">
+            <span class="icon-image">📚</span>
+            <span class="file-name">Projet Biblio</span>
+        </button>
         
-        <div class="file-icon" onclick="openProject('matrice')">
-            <div class="icon-image">📊</div>
-            <div class="file-name">Projet Matrice de Compétences</div>
-        </div>
+        <button type="button" class="file-icon" onclick="openProject('matrice')">
+            <span class="icon-image">📊</span>
+            <span class="file-name">Projet Matrice de Compétences</span>
+        </button>
         
-        <div class="file-icon" onclick="openProject('rugby')">
-            <div class="icon-image">🏉</div>
-            <div class="file-name">Projet Site Rugby</div>
-        </div>
+        <button type="button" class="file-icon" onclick="openProject('rugby')">
+            <span class="icon-image">🏉</span>
+            <span class="file-name">Projet Site Rugby</span>
+        </button>
 
-        <div class="file-icon" onclick="openProject('gestion-sejour')">
-            <div class="icon-image">🏥</div>
-            <div class="file-name">Projet Gestion Séjour</div>
-        </div>
+        <button type="button" class="file-icon" onclick="openProject('gestion-sejour')">
+            <span class="icon-image">🏥</span>
+            <span class="file-name">Projet Gestion Séjour</span>
+        </button>
 
-        <div class="file-icon" onclick="openProject('reservation-vehicule')">
-            <div class="icon-image">🚗</div>
-            <div class="file-name">Projet Réservation de Véhicule</div>
-        </div>
+        <button type="button" class="file-icon" onclick="openProject('reservation-vehicule')">
+            <span class="icon-image">🚗</span>
+            <span class="file-name">Projet Réservation de Véhicule</span>
+        </button>
 
         <a href="https://www.linkedin.com/in/ayyoub-chetouani-28098a287/" target="_blank" class="file-icon" style="text-decoration: none;">
             <div class="icon-image" style="background: linear-gradient(135deg, #0a66c2 0%, #005885 100%); padding: 0;">
@@ -313,11 +316,11 @@
     </div>
 
     <!-- Modals -->
-    <div id="modal-biblio" class="modal" onclick="closeModal('biblio')">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-biblio" class="modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">📚 Projet Biblio</div>
-                <button class="close-btn" onclick="closeModal('biblio')"></button>
+                <button type="button" class="close-btn" onclick="closeModal('biblio')"></button>
             </div>
             <div class="modal-body">
                 <h2>Système de Gestion de Bibliothèque</h2>
@@ -337,11 +340,11 @@
         </div>
     </div>
 
-    <div id="modal-matrice" class="modal" onclick="closeModal('matrice')">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-matrice" class="modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">📊 Projet Matrice de Compétences</div>
-                <button class="close-btn" onclick="closeModal('matrice')"></button>
+                <button type="button" class="close-btn" onclick="closeModal('matrice')"></button>
             </div>
             <div class="modal-body">
                 <h2>Outil de Gestion des Compétences</h2>
@@ -362,11 +365,11 @@
         </div>
     </div>
 
-    <div id="modal-rugby" class="modal" onclick="closeModal('rugby')">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-rugby" class="modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">🏉 Projet Site Rugby</div>
-                <button class="close-btn" onclick="closeModal('rugby')"></button>
+                <button type="button" class="close-btn" onclick="closeModal('rugby')"></button>
             </div>
             <div class="modal-body">
                 <h2>Site Web Association</h2>
@@ -386,11 +389,11 @@
         </div>
     </div>
 
-    <div id="modal-gestion-sejour" class="modal" onclick="closeModal('gestion-sejour')">
-        <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-gestion-sejour" class="modal">
+        <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title">🏥 Projet Gestion Séjour</div>
-                <button class="close-btn" onclick="closeModal('gestion-sejour')"></button>
+                <button type="button" class="close-btn" onclick="closeModal('gestion-sejour')"></button>
             </div>
             <div class="modal-body">
                 <h2>Un système de Gestion de Séjour d'un Hopital</h2>
@@ -419,11 +422,11 @@
         </div>
     </div>
 
-    <div id="modal-reservation-vehicule" class="modal" onclick="closeModal('reservation-vehicule')">
-    <div class="modal-content" onclick="event.stopPropagation()">
+    <div id="modal-reservation-vehicule" class="modal">
+    <div class="modal-content">
         <div class="modal-header">
             <div class="modal-title">🚗 Projet Réservation de Véhicule</div>
-            <button class="close-btn" onclick="closeModal('reservation-vehicule')"></button>
+            <button type="button" class="close-btn" onclick="closeModal('reservation-vehicule')"></button>
         </div>
         <div class="modal-body">
             <h2>Un système de Réservation de Véhicules d'un Hôpital</h2>
@@ -482,6 +485,15 @@
         function closeModal(project) {
             document.getElementById(`modal-${project}`).style.display = 'none';
         }
+
+        // Fermer en cliquant en dehors du contenu de la modale
+        document.querySelectorAll('.modal').forEach((modal) => {
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
 
         // Fermer avec Escape
         document.addEventListener('keydown', (e) => {
