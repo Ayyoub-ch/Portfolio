@@ -136,6 +136,10 @@
             background: linear-gradient(135deg, #dda0dd 0%, #ba55d3 100%);
         }
 
+        .file-icon:nth-child(7) .icon-image {
+            background: linear-gradient(135deg, #ff8c00 0%, #ffffff 100%);
+        }
+
         .file-name {
             font-size: 13px;
             text-align: center;
@@ -290,6 +294,11 @@
         <button type="button" class="file-icon" onclick="openProject('modal-gestion-sejour-mobile')">
             <span class="icon-image">📱</span>
             <span class="file-name">Projet Gestion Séjour Mobile</span>
+        </button>
+
+        <button type="button" class="file-icon" onclick="openProject('open-data')">
+            <span class="icon-image">📈</span>
+            <span class="file-name">Projet Open Data</span>
         </button>
 
         <a href="https://www.linkedin.com/in/ayyoub-chetouani-28098a287/" target="_blank" class="file-icon" style="text-decoration: none;">
@@ -504,6 +513,27 @@
                 <a href="https://github.com/Ayyoub-ch/Projet_Gestion_Patient.git" target="_blank" class="github-btn">Voir le projet sur GitHub</a>
             </div>
         </div>
+
+    <div id="modal-open-data" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">📈 Projet Open Data</div>
+                <button type="button" class="close-btn" onclick="closeModal('open-data')"></button>
+            </div>
+            <div class="modal-body">
+                <h2>Plateforme d'Analyse de Données Ouvertes</h2>
+                <p>Contexte: Réalisation professionnelle dans le cadre d'un 2ème stage à Logical Conseils entre le 5 janvier et le 20 février 2026</p>
+                <p>But: Contribuer à la création d'une plateforme d'analyse de données ouvertes via une API qui regroupe en son sein un ensemble d'API et une interface utilisateur intuitive</p>
+                <p>Technologies utilisées: Fast API (Python), Streamlit (Python), CSS, Google Cloud Platform</p>
+                <p>Stockage: Google Cloud Storage (Buckets)</p>
+                <p><strong>Fonctionnalités principales :</strong></p>
+                <p>• Possibilité de consulter les données ouvertes via une API</p>
+                <p>• Consulter en fonction de critères spécifiques (période, date, etc ..)</p>
+                <p>• Exporter les données en JSON</p>
+                <a href="PDF/Rapport de Stage 2026.pdf" target="_blank" class="github-btn">Voir le rapport de Stage</a>
+            </div>
+        </div>
+    </div>
     </div>
 </div>
 
